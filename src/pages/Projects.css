@@ -1,0 +1,84 @@
+.projects-page {
+  min-height: 100vh;
+  background: #060010;
+  color: white;
+  padding: 120px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 160px;
+}
+
+/* Each project section
+.project-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
+
+.project-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;     /* control spacing between text & folder */
+}
+
+
+/* LEFT SIDE */
+.project-left {
+  width: 45%;
+}
+
+.project-left h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #8f6bff, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-left p {
+  font-size: 18px;
+  opacity: 0.85;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.project-left ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.project-left li {
+  background: rgba(255,255,255,0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.project-left button {
+  margin-top: 30px;
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(90deg, #5227ff, #a855ff);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.project-left button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(130,90,255,0.8);
+}
+
+/* RIGHT SIDE */
+.project-right {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

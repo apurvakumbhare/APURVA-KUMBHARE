@@ -1,0 +1,361 @@
+:root {
+  --white: hsl(0, 0%, 100%);
+  --purple-primary: rgba(132, 0, 255, 1);
+  --purple-glow: rgba(132, 0, 255, 0.2);
+  --purple-border: rgba(132, 0, 255, 0.5);
+  --background-dark: #060010;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+  overflow: hidden;
+  max-width: 1400px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+
+/* MAIN CARD */
+.magic-bento-card {
+  break-inside: avoid;
+  margin-bottom: 32px;
+  width: 100%;
+  border-radius: 20px;
+  background: #060010;
+  border: 1px solid rgba(132, 0, 255, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+
+  /* width: 100%;
+  border-radius: 20px;
+  background: #060010;
+  border: 1px solid var(--purple-border);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.35s ease;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 200px; */
+}
+
+.magic-bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, .7),
+    0 0 40px var(--purple-glow);
+}
+
+/* CERTIFICATE IMAGE */
+.certificate-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.certificate-img {
+  width: 100%;
+  height: auto;
+  /* KEY PART */
+  display: block;
+  object-fit: contain;
+  /* keeps full certificate visible */
+  padding: 0px;
+  background: #060010;
+}
+
+.magic-bento-card:hover .certificate-img {
+  /* transform: scale(100.06); */
+}
+
+/* GLASS INFO STRIP */
+.certificate-overlay {
+  padding: 12px 16px;
+  background: rgba(6, 0, 16, 0.8);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(132, 0, 255, 0.3);
+}
+
+
+.certificate-overlay h3 {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.certificate-overlay p {
+  font-size: 12px;
+  opacity: .85;
+}
+
+/* BORDER GLOW */
+.magic-bento-card--border-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 4px;
+  border-radius: inherit;
+  background: radial-gradient(var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+      rgba(132, 0, 255, calc(var(--glow-intensity) * .9)) 0%,
+      rgba(132, 0, 255, calc(var(--glow-intensity) * .4)) 30%,
+      transparent 60%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* PARTICLES */
+.particle-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.particle {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(132, 0, 255, 1);
+}
+
+/* GLOBAL SPOTLIGHT */
+.global-spotlight {
+  position: fixed;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 999;
+}
+
+/* MOBILE */
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    /* 1 on phones */
+    padding: 16px;
+  }
+}
+
+.magic-bento-card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.8s cubic-bezier(.2, .9, .3, 1);
+}
+
+.magic-bento-card.reveal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* .certificate-img {
+  transition: transform 0.5s ease;
+  cursor: zoom-in;
+} */
+
+.magic-bento-card:hover .certificate-img {
+  /* transform: scale(1.12); */
+}
+
+.magic-bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top,
+      rgba(132, 0, 255, 0.15),
+      transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.magic-bento-card:hover::before {
+  opacity: 1;
+}
+
+
+
+/* ===== PDF MODAL ===== */
+
+/* .pdf-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 0, 16, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+} */
+
+
+.pdf-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(6, 0, 16, 0.92);
+  backdrop-filter: blur(10px);
+
+  z-index: 9999999;
+  /* over everything */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 
+.pdf-container {
+  width: 85%;
+  height: 90%;
+  background: #060010;
+  border-radius: 16px;
+  box-shadow: 0 0 80px rgba(132, 0, 255, 0.4);
+  overflow: hidden;
+  border: 1px solid rgba(132, 0, 255, 0.4);
+} */
+/* 
+.pdf-container {
+  width: 90vw;
+  height: 90vh;
+
+  background: #060010;
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 0 80px rgba(132, 0, 255, 0.7);
+  border: 2px solid rgba(132, 0, 255, 0.5);
+}
+
+.pdf-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+/* Animation */
+/* @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.pdf-container {
+  width: 85vw;
+  height: 85vh;
+  background: black;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(132, 0, 255, 0.6);
+  border: 2px solid rgba(132, 0, 255, 0.4);
+  animation: popIn 0.35s cubic-bezier(.2, .9, .3, 1);
+}
+
+.pdf-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: black;
+}
+
+/* Animations */
+/* @keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}  */
+
+
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 0, 16, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 999999999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pdf-container {
+  width: 92vw;
+  height: 92vh;
+  background: black;
+  border-radius: 18px;
+  overflow: hidden;
+
+  border: 2px solid rgba(132, 0, 255, 0.7);
+  box-shadow: 0 0 100px rgba(132, 0, 255, 0.8);
+
+  animation: popIn 0.35s cubic-bezier(.2,.9,.3,1);
+}
+
+.pdf-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: black;
+}
+
+@keyframes popIn {
+  from { transform: scale(.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

@@ -1,0 +1,48 @@
+.techstack-section {
+  width: 100%;
+  max-width: 1300px;
+  margin: 120px auto;
+  padding: 0 40px;
+}
+
+.techstack-title {
+  text-align: center;
+  font-size: 36px;
+  color: white;
+  margin-bottom: 60px;
+}
+
+/* 2x2 layout */
+.techstack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+/* glass boxes */
+.tech-group {
+  position: relative;
+  padding: 15px;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.897);
+  border: 1px dashed rgb(255, 255, 255);
+  backdrop-filter: blur(30px);
+}
+
+.tech-group h3 {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+  .techstack-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
